@@ -39,7 +39,24 @@ print("--------------------")
 for item in products:
     print("+", item["name"], "(${:.2f})".format(item["price"]))
 
+dpmt = []
 
+for item in products:  
+    dpmt.append(item["department"])
+
+dpmt = list(set(dpmt))
+dpmt.sort()
+dpmt_dict = []
+
+for d in dpmt:
+    dpmt_dict.append((d, len(list(filter(lambda i: i == d, products)))))
+
+print("--------------------")
+print(f"THERE ARE {len(dpmt)} DEPARTMENTS:")
+print("--------------------")
+
+for d in dpmt:
+    print(f"+", d.title())
 
 # TODO: write some Python code here to produce the desired output
 
