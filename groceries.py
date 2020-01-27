@@ -37,7 +37,7 @@ print(f"THERE ARE {len(products)} PRODUCTS:")
 print("--------------------")
   
 for item in products:
-    print(f"+", item["name"], " ", item["price"])
+    print("+", item["name"], "(${:.2f})".format(item["price"]))
 
 
 
