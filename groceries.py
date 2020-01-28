@@ -2,6 +2,8 @@
 
 #from pprint import pprint
 
+import operator
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -25,21 +27,17 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
-# pprint(products)
-
-#breakpoint()
-
 print("--------------------")
-#print("THERE ARE", len(products), "PRODUCTS:")
-#print("THERE ARE " + str(len(products)) + " PRODUCTS:")
 print(f"THERE ARE {len(products)} PRODUCTS:")
 print("--------------------")
-  
-for item in products:
+
+sortedProducts = sorted(products, key=operator.Itemgetter("name"))
+
+for item in sortedProducts:
     print("+", item["name"], "(${:.2f})".format(item["price"]))
 
-
+#creates a list of department titles
+dpmt = []
 for item in products:  
     dpmt.append(item["department"])
 dpmt = list(set(dpmt))
@@ -48,6 +46,8 @@ dpmt.sort()
 print("--------------------")
 print(f"THERE ARE {len(dpmt)} DEPARTMENTS:")
 print("--------------------")
+
+
 
 for d in dpmt:
     print(f"+", d.title())
